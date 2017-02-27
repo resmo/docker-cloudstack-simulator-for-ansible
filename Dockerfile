@@ -37,9 +37,17 @@ RUN apt-get -y update && apt-get install -y \
     python-mysql.connector \
     supervisor \
     wget \
+    nginx \
+    jq \
     mysql-server \
+    openssh-client \
     && apt-get clean all \
     && rm -rf /var/lib/apt/lists/*;
+
+# TODO: check if and why this is needed
+RUN mkdir -p /root/.ssh \
+    && chmod 0700 /root/.ssh \
+    && ssh-keygen -t rsa -N "" -f id_rsa.cloud
 
 RUN mkdir -p /var/run/mysqld; \
     chown mysql /var/run/mysqld; \
@@ -64,12 +72,13 @@ RUN (/usr/bin/mysqld_safe &); \
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY zones.cfg /opt/zones.cfg
+COPY nginx_default.conf /etc/nginx/sites-available/default
+RUN pip install cs
 COPY run.sh /opt/run.sh
 
-RUN apt-get -y update && apt-get install -y \
-  openssh-client
-RUN mkdir -p /root/.ssh && chmod 0700 /root/.ssh && ssh-keygen -t rsa -N "" -f id_rsa.cloud
 
-EXPOSE 8080 8096
+
+
+EXPOSE 8888 8080 8096
 
 CMD ["/usr/bin/supervisord"]
