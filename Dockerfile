@@ -76,9 +76,6 @@ COPY nginx_default.conf /etc/nginx/sites-available/default
 RUN pip install cs
 COPY run.sh /opt/run.sh
 
-
-
-
 EXPOSE 8888 8080 8096
 
 CMD ["/usr/bin/supervisord"]

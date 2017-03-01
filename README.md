@@ -9,14 +9,12 @@ The docker image runs the CloudStack simulator and contains two zones for the di
 * CloudStack Zone: Sandbox-simulator-advanced
 * Zone: Sandbox-simulator-basic
 
-Modules related to the specific network setup must set the correct `zone`
-
 ## Build
 
     docker build -t cloudstack/simulator .
 
 ## Run
 
-    docker run --name cloudstack -d cloudstack/simulator
+    docker run --name cloudstack -d -p 8888:8888 cloudstack/simulator
 
-NOTE: It may take some time until the zones are deployed. 
+NOTE: It may take some time until the zones are deployed. The web server will respond with HTTP 503 on port 8888 unless the zones are fully deployed.
