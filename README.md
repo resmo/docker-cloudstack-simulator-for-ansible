@@ -11,10 +11,14 @@ The docker image runs the CloudStack simulator and contains two zones for the di
 
 ## Build
 
-    docker build -t cloudstack/simulator .
+    docker build -t resmo/cloudstack-sim .
 
 ## Run
 
-    docker run --name cloudstack -d -p 8888:8888 cloudstack/simulator
+    docker run --name cloudstack -d -p 8888:8888 cloudstack-sim
 
 NOTE: It may take some time until the zones are deployed. The web server will respond with HTTP 503 on port 8888 unless the zones are fully deployed.
+
+## Hub
+
+    https://hub.docker.com/r/resmo/cloudstack-sim/
