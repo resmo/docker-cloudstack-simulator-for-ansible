@@ -11,5 +11,6 @@ then
   export CLOUDSTACK_ENDPOINT=http://127.0.0.1:8096
   export CLOUDSTACK_KEY=""
   export CLOUDSTACK_SECRET=""
-  cs listUsers account=admin | jq .user[0] > /var/www/html/admin.json
+  admin_id="$(cs listUsers account=admin | jq .user[0].id)"
+  cs getUserKeys id=$admin_id > /var/www/html/admin.json
 fi
