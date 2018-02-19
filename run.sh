@@ -12,5 +12,5 @@ then
   export CLOUDSTACK_KEY=""
   export CLOUDSTACK_SECRET=""
   admin_id="$(cs listUsers account=admin | jq .user[0].id)"
-  cs getUserKeys id=$admin_id > /var/www/html/admin.json
+  cs getUserKeys id=$admin_id | jq .userkeys > /var/www/html/admin.json
 fi
