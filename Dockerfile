@@ -55,7 +55,7 @@ RUN mkdir -p /var/run/mysqld; \
 
 RUN (/usr/bin/mysqld_safe &); sleep 5; mysqladmin -u root -proot password ''
 
-RUN wget https://github.com/apache/cloudstack/archive/4.9.2.0.tar.gz -O /opt/cloudstack.tar.gz; \
+RUN wget https://github.com/apache/cloudstack/archive/4.9.3.0.tar.gz -O /opt/cloudstack.tar.gz; \
     mkdir -p /opt/cloudstack; \
     tar xvzf /opt/cloudstack.tar.gz -C /opt/cloudstack --strip-components=1
 
