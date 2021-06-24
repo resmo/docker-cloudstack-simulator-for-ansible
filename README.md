@@ -1,3 +1,11 @@
+
+
+# Obsolete 
+
+Superseded by https://github.com/ansible/cloudstack-test-container
+
+---
+
 # CloudStack Simulator as Docker Image
 
 The purpose of this docker image is to run automated integration tests for the CloudStack modules in Ansible.
